@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>中英文切换</title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	
+	li{
+
+		float: left;
+		list-style: none;
+		overflow: auto;
+	}
+	a{
+
+		text-decoration: none;
+		width: 80px;
+		line-height: 20px;
+		background-color: green;
+		display: block;
+		text-align: center;
+	}
+	span{
+		display: none;
+	}
+	ul li a:hover span{
+		display: block;
+
+	}
+	ul li a:hover{
+		margin-top: -20px;
+	}
+
+</style>
+<body>
+<ul>
+	<li><a href="">首页<span>first</span></a></li>
+	<li><a href="">课程<span>course</span></a></li>
+	<li><a href="">学习<span>learn</span></a></li>
+	<li><a href="">更多<span>more</span></a></li>
+	<li><a href="">关于我们<span>about</span></a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,60 @@
+#btnlogin{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+#mask{
+	background-color: black;
+	opacity: 0.5;
+	width: 100%;
+	z-index: 1000;
+}
+#login{
+	position: fixed;
+	left: 30%;
+	top: 30%;
+	border: 1px solid black;
+	z-index: 1001;
+}
+.head{
+	width: 400px;
+	height: 40px;
+	background-color: #666666;
+	position: relative;
+	text-align: left;
+	line-height: 40px;
+	font-size: 20px;
+	cursor: move;
+}
+.contain{
+	width: 400px;
+	height: 250px;
+	position: relative;
+	background-color: white;
+
+}
+#close{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 25px;
+}
+.user, .password, .submit{
+	padding-top: 25px;
+	margin-left: 25px;
+	width: 350px;
+	height: 50px;
+}
+.contain input{
+	width: 200px;
+	height: 40px;
+	border: 1px solid black;
+}
+.submit input{
+	background-color: #3F89EC;
+}

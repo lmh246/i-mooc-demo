@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>下拉菜单</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="E:\web\锋利的jQuery\jquery-3.1.1.js"></script>
+</head>
+<style type="text/css">
+	a{
+		text-decoration: none;
+		color: white;
+	}
+	a:hover{
+		color: blue;
+	}
+	li{
+		width: 200px;
+		height: 40px;
+		background-color: black;
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+		border:1px solid white;
+	}
+	ul li ul{
+		position: absolute;
+		margin-left: 200px;
+		margin-top: -20px;
+		display: none;
+	}
+</style>
+<body>
+<div class="pingdao">
+	<ul>
+		<li class="navment"><a href="">热门下载</a>
+			<ul>
+				<li><a href="">psd下载</a></li>
+				<li><a href="">笔刷</a></li>
+				<li><a href="">纹理背景</a></li>
+				<li><a href="">设计师壁纸</a></li>
+				<li><a href="">神器下载</a></li>
+			</ul></li>
+			
+		<li class="navment"><a href="">界面&图标设计</a>
+			<ul>
+				<li><a href="">ui元素</a></li>
+				<li><a href="">UI元素</a></li>
+				<li><a href="">从事</a></li>
+				<li><a href="">是寒假覅</a></li>
+				<li><a href="">设计</a></li>
+			</ul></li>
+			
+		<li><a href="">PS教程&设计文章</a></li>
+		<li><a href="">信息化设计</a></li>
+		<li><a href="">职场&规划</a></li>
+		<li><a href="">酷站推荐</a></li>
+		<li><a href="">图书推荐</a></li>
+	</ul>
+</div>
+
+	
+<script type="text/javascript">
+	$(function(){
+		$(".navment").mouseover(function(){
+			$(this).children("ul").show();
+		});
+
+		$(".navment").mouseout(function(){
+			$(this).children("ul").hide();
+		})
+
+	})
+</script>
+
+
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>当前系统时间</title>
+<script language="javascript" type="text/javascript">
+  window.onload = function(){
+    showTime();
+    
+  }
+  function checkTime(i){  //补位处理，当分钟或者秒小于10时，在前面添加0
+      if (i<10) {
+          i = "0"+i;
+      }
+      return i;
+  }
+  function showTime(){
+    var now=new Date();
+    var year=  now.getFullYear(); //获取年份
+    var month= now.getMonth()+1 ;//获取月份，因为从0开始，所以加一
+    var day=  now.getDate()  ;//获取天数
+    var h=  now.getHours()  ;//获取小时
+    var m=  now.getMinutes()  ;//获取分钟
+    var s=  now.getSeconds()  ;//获取秒
+    m=checkTime(m)
+    s=checkTime(s)
+
+    var weekday=new Array(7)
+    weekday[0]="星期日"
+    weekday[1]="星期一"
+    weekday[2]="星期二"
+    weekday[3]="星期三"
+    weekday[4]="星期四"
+    weekday[5]="星期五"
+    weekday[6]="星期六"
+
+    document.getElementById("show").innerHTML=""+year+"年"+month+"月"+day+"日 "+  weekday[now.getDay()] +h+":"+m+":"+s;
+    t=setTimeout('showTime()',1000)
+  }
+
+</script>
+</head>
+<body>
+<div class="content1">
+  <div id="show">显示时间的位置</div>
+</div>
+</body>
+</html>

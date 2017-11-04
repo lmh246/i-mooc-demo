@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定义在头部的loading</title>
+	<script type="text/javascript" src="jquery-3.1.1.js"></script>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.loading{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top:0;
+			left:0;
+			z-index: 100;
+			background-color:#fff; 
+		}
+		.pic{
+			width: 0%;
+			height: 15px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #f33;	
+		}
+
+
+
+	</style>
+</head>
+<body>
+
+<div class="loading">
+	<div class="pic"></div>
+</div>
+
+
+<header>
+	<img src="http://e.hiphotos.baidu.com/zhidao/wh%3D450%2C600/sign=75aaa91fa444ad342eea8f83e59220c2/0bd162d9f2d3572cf556972e8f13632763d0c388.jpg" alt="">
+</header>
+<script type="text/javascript">
+	$(function(){
+		$(".loading .pic").animate({width:"10%"},100);
+	})
+</script>
+
+<section class="banner">
+	<img src="http://f.hiphotos.baidu.com/zhidao/pic/item/8b82b9014a90f60326b707453b12b31bb051eda9.jpg" alt="">
+</section>
+<script type="text/javascript">
+	$(function(){
+		$(".loading .pic").animate({width:"30%"},100);
+	})
+</script>
+
+<section class="about">
+	<img src="http://img5.duitang.com/uploads/item/201509/18/20150918071714_m3ZPi.jpeg" alt="">
+</section>
+<script type="text/javascript">
+	$(function(){
+		$(".loading .pic").animate({width:"50%"},100);
+	})
+</script>
+
+<section class="pro">
+	<img src="http://imga.mumayi.com/android/wallpaper/2011/10/31/sl_600_2011103102512390463174.jpg" alt="">
+</section>
+<script type="text/javascript">
+	$(function(){
+		$(".loading .pic").animate({width:"70%"},100);
+	})
+</script>
+
+<section class="news">
+	<img src="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1390442719906.jpg" alt="">
+</section>
+<script type="text/javascript">
+	$(function(){
+		$(".loading .pic").animate({width:"90%"},100);
+	})
+</script>
+
+
+
+<footer>
+	<img src="http://b.zol-img.com.cn/desk/bizhi/image/4/960x600/1390442719906.jpg" alt="">
+</footer>
+<script type="text/javascript">
+	$(function(){
+		$(".loading .pic").animate({width:"100%"},100,function(){
+			$(".loading").fadeOut();
+		});
+	})
+</script>
+</body>
+</html>

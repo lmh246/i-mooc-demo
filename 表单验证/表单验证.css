@@ -1,0 +1,12 @@
+.content{
+	margin: 0 auto;
+	width: 500px;
+	height: 500px;
+}
+.submit{
+	margin-left: 150px;
+	margin-top: 10px;
+}
+#count, #count2{
+	display: none;
+}

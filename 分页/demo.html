@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>分页效果</title>
+</head>
+<style type="text/css">
+	a {
+		display: inline-block;
+		margin-left: 10px;
+		font-family: "微软雅黑";
+		text-decoration: none;
+		color: black;
+		text-align: center;
+		border: 1px solid #DEDEDE;
+		background-color: #FFFFFF;
+		width: 25px;
+		height: 25px;
+	}
+	.first,.last {
+		
+		width: 60px;
+		height: 25px;
+		
+	}
+	.pre,.next {
+		width: 75px;
+		height: 25px;
+
+	}
+</style>
+<body>
+	<ul id="ul1">
+		<!-- <li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li> -->
+	</ul>
+<div id="div1">
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	window.onload = function () {
+		var json = {
+			"number" : [
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21
+			]
+		};
+		
+
+		
+
+		page({
+			id:"div1",
+			nowNum:1,
+			allNum:Math.ceil((json.number.length)/6),
+			callback: function (now,all) {
+						var ul1 = document.getElementById("ul1");
+						var num = (now*6 < json.number.length)? 6 : json.number.length-(now-1)*6;
+						for (var i=0;i<num;i++) {
+							var aLi = document.createElement("li");
+							aLi.innerHTML = json.number[(now-1)*6+i];
+							ul1.appendChild(aLi);
+						}
+						
+
+			}
+		});
+
+
+	}
+
+	
+
+	function page (obj) {
+		var idValue = obj.id;//获取需要出现页码的那个容器的id
+		var div1 = document.getElementById(idValue);
+		var nowNum = obj.nowNum;//获取当前页的页码
+		var allNum = obj.allNum;//获取总的页码
+		var callback = obj.callback;//获取一个回掉函数
+//乳沟当前页码为1，添加首页,与下一页
+		if (nowNum > 1) {
+			var aHref = document.createElement("a");
+			aHref.innerHTML = '首页';
+			aHref.className = "first";
+			aHref.href = "#"+1;
+			div1.appendChild(aHref);
+			var bHref = document.createElement("a");
+			bHref.innerHTML = '上一页';
+			bHref.className = "pre";
+			bHref.href = "#"+(nowNum-1);
+			div1.appendChild(bHref);
+		}
+//假设当总页数小于5时，显示所有的页数
+		if (allNum<=5) {
+			for (var i = 1;i <= allNum; i++) {
+				var aHref = document.createElement("a");
+				if (i == nowNum) {
+					aHref.style.backgroundColor = '#0099FF';//当前页页码的背景颜色为蓝色
+				}
+				aHref.innerHTML = i;
+				aHref.href = "#"+i;
+				div1.appendChild(aHref);
+			}
+		}
+//当总页数大于5时，显示五页，分别为当前页，和当前页的前两页，与当前页的后两页		
+		else if (allNum > 5) {
+			for (var i = 1;i<=5;i++) {
+				//如果当前页是第一和第二页，就是按照小于五页，显示每一页，不然就会出现负的页码
+				if (nowNum == 2||nowNum == 1) {
+					var aHref = document.createElement("a");
+					if (i == nowNum) {
+						aHref.style.backgroundColor = '#0099FF';
+					} 
+					aHref.innerHTML = i;			
+					aHref.href = "#"+i;
+					div1.appendChild(aHref);
+				} 
+				//如果是最后一页或者最后第二页，就显示最后一页开始的五个页码，不然就会出现大于总页数的页码
+				else if (nowNum == allNum || nowNum == allNum -1) {
+					var aHref = document.createElement("a");
+					if (((nowNum == allNum-1)&&i==4)||(nowNum==allNum&&i==5)) {
+						aHref.style.backgroundColor = '#0099FF';
+					} 
+					aHref.innerHTML = allNum-5+i;
+					aHref.href = "#"+(allNum-5+i);
+					div1.appendChild(aHref);
+				} 
+				//正常出现
+				else {
+					var aHref = document.createElement("a");
+					if ((nowNum-3+i) == nowNum) {
+						aHref.style.backgroundColor = '#0099FF';
+					}
+					
+						aHref.innerHTML = (nowNum-3+i);
+						aHref.href = "#"+(nowNum-3+i);
+						div1.appendChild(aHref);
+				}
+			}
+				
+		}
+
+//添加尾页，下一页
+		if (nowNum < allNum) {
+			var aHref = document.createElement("a");
+			aHref.innerHTML = '下一页';
+			aHref.className = "next";
+			aHref.href = "#"+(nowNum+1);
+			div1.appendChild(aHref);
+			var bHref = document.createElement("a");
+			bHref.innerHTML = '尾页';
+			bHref.className = "last";
+			bHref.href = "#"+allNum;
+			div1.appendChild(bHref);
+		}
+
+
+		//
+
+		callback(nowNum,allNum);
+		//点击页码变化
+		var a = div1.getElementsByTagName("a");
+		for (var i = 0; i < a.length; i++  ) {
+			a[i].onclick = function () {
+				ul1.innerHTML = " ";
+				var nowNum = parseInt(this.getAttribute('href').substring(1));
+				div1.innerHTML = " ";
+				page({	
+				id : div1.id,
+				nowNum : nowNum,
+				allNum : allNum,
+				callback:callback
+			
+			});
+			}
+		}
+	}
+
+</script>
+</body>
+</html>
